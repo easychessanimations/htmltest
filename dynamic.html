@@ -9,10 +9,15 @@ document.write(`
   </head>
 `)
 
-setTimeout(_=>document.write(`
-  <body>
-    dynamic page
-  </body>
-</html>
-`), 5000)
+function writeBody{
+    document.write(`
+        <body>
+            dynamic page
+        </body>
+        </html>
+    `
+}
+
+if(location.href.match(/timeout/)) setTimeout(_=>writeBody()), 5000)
+else writeBody()
 </script>
