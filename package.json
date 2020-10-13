@@ -1,20 +1,20 @@
 {
-  "name": "htmltest",
+  "name": "webpack-demo",
   "version": "1.0.0",
-  "description": "html test",
+  "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/easychessanimations/htmltest.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/easychessanimations/htmltest/issues"
+  "devDependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.3.12"
   },
-  "homepage": "https://github.com/easychessanimations/htmltest#readme"
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
 }
