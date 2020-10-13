@@ -1,17 +1,8 @@
 import _ from 'lodash'
 import './style.css'
 import './favicon.ico'
-import { intro } from './mymodule.js'
+import { div } from './smartdom/smartdom.js'
 
-function component() {
-  const element = document.createElement('div');
+let app = div().addStyle("width", "200px").addStyle("height", "200px").addStyle("backgroundColor", "#0f0")
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack', 'remote', 'build', 'config', intro()], ' ');
-
-  element.classList.add('hello');
-
-  return element;
-}
-
-document.body.appendChild(component());
+document.body.appendChild(app.e)
