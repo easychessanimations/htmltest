@@ -5,8 +5,13 @@ export class SmartdomElement_{
         this.e = document.createElement(this.props.tagName)
     }
 
-    a(child){
-        this.e.appendChild(child.e)
+    a(...childs){
+        for(let child of childs) this.e.appendChild(child.e)
+        return this
+    }
+
+    sa(key, value){
+        this.e.setAttribute(key, value)
         return this
     }
 
@@ -55,3 +60,27 @@ export class div_ extends SmartdomElement_{
 }
 
 export function div(){return new div_()}
+
+export class table_ extends SmartdomElement_{
+    constructor(){
+        super({tagName: "table"})
+    }
+}
+
+export function table(){return new table_()}
+
+export class tr_ extends SmartdomElement_{
+    constructor(){
+        super({tagName: "tr"})
+    }
+}
+
+export function tr(){return new tr_()}
+
+export class td_ extends SmartdomElement_{
+    constructor(){
+        super({tagName: "td"})
+    }
+}
+
+export function td(){return new td_()}
