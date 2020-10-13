@@ -1,5 +1,6 @@
-import _ from 'lodash';
-import './style.css';
+import _ from 'lodash'
+import './style.css'
+import './favicon.ico'
 import { intro } from './mymodule.js'
 
 function component() {
