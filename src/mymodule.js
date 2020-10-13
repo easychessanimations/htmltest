@@ -1,7 +1,5 @@
 import dep from './moduledependency.js'
 
-function intro(){
+export function intro(){
     return `intro ${dep}`
 }
-
-export const intro = intro
