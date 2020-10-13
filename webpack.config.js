@@ -3,6 +3,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
+let devPublic = "public"
+
+try{
+    devPublic = require('child_process').execSync('gp url 8080').toString().trim()
+}catch(err){
+
+}
+
 module.exports = {
   entry: [
       './src/index.js',
@@ -24,7 +32,7 @@ module.exports = {
       // make HMR work - start
       host: '0.0.0.0',
       disableHostCheck: true,
-      public: require('child_process').execSync('gp url 8080').toString().trim(),
+      public: devPublic,
       // make HMR work - end
     contentBase: path.join(__dirname, "dist"),    
     port: 8080,
