@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import './style.css';
-const intro = require('./mymodule.js')
+import intro from './mymodule.js'
 
 function component() {
   const element = document.createElement('div');

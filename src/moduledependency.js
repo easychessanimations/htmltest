@@ -1,5 +1,3 @@
 const dep = "dep"
 
-module.exports = {
-    dep: dep
-}
+export const dep = dep

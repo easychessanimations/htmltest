@@ -1,9 +1,7 @@
-const { dep } = require('./moduledependency.js')
+import dep from './moduledependency.js'
 
 function intro(){
-    return "intro" + " " + dep
+    return `intro ${dep}`
 }
 
-module.exports = {
-    intro: intro
-}
+export const intro = intro
