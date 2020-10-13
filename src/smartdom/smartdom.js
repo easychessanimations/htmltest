@@ -28,6 +28,7 @@ export class SmartdomElement_{
     tdecu(){return this.tdec("underline")}
     bc(x){return this.addStyle("backgroundColor", x)}
     pad(x){return this.addStyle("padding", x + "px")}
+    mar(x){return this.addStyle("margin", x + "px")}
     html(x){this.e.innerHTML = x;return this}
 }
 
