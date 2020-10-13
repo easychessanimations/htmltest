@@ -10,11 +10,13 @@ let app = div().por().pad(20).w(400).h(400).bc("#ffa").c("#007").html("Smartdom 
         table().sa("cellpadding", 3).sa("cellspacing", 3).sa("border", 1).a(
             tr().a(
                 td().html("a"),
-                td().html("b")
+                td().html("b"),
+                [1,2,3].map(i=>td().html(`${i}`))
             ),
             tr().a(
                 td().html("x"),
-                td().html("y")
+                td().html("y"),
+                [4,5,6].map(i=>td().html(`${i}`))
             )
         )
     ))

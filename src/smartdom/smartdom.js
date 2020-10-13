@@ -6,7 +6,15 @@ export class SmartdomElement_{
     }
 
     a(...childs){
-        for(let child of childs) this.e.appendChild(child.e)
+        for(let child of childs){
+            if(child instanceof SmartdomElement_){
+                this.e.appendChild(child.e)
+            }else{
+                for(let childe of child){
+                    this.e.appendChild(childe.e)
+                }                
+            }            
+        }
         return this
     }
 
