@@ -14,6 +14,10 @@ export class SmartdomElement_{
     w(x){return this.addStyle("width", x + "px")}
     h(x){return this.addStyle("height", x + "px")}
     c(x){return this.addStyle("color", x)}
+    bdr(x){return this.addStyle("border", x)}
+    bdrw(x){return this.addStyle("borderWidth", x + "px")}
+    bdrc(x){return this.addStyle("borderColor", x)}
+    bdrs(x){return this.addStyle("borderStyle", x)}
     fw(x){return this.addStyle("fontWeight", x)}
     fwb(){return this.fw("bold")}
     fs(x){return this.addStyle("fontSize", x + "px")}
