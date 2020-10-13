@@ -11,8 +11,8 @@ export class SmartdomElement_{
         return this
     }
 
-    w(x){return this.addStyle("width", x)}
-    h(x){return this.addStyle("height", x)}
+    w(x){return this.addStyle("width", x + "px")}
+    h(x){return this.addStyle("height", x + "px")}
     bc(x){return this.addStyle("backgroundColor", x)}
 }
 
