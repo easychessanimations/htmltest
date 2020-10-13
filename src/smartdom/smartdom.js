@@ -34,6 +34,7 @@ export class SmartdomElement_{
     t(x){return this.addStyle("top", x + "px")}
     l(x){return this.addStyle("left", x + "px")}
     c(x){return this.addStyle("color", x)}
+    op(x){return this.addStyle("opacity", x)}
     ta(x){return this.addStyle("textAlign", x)}
     tac(){return this.ta("center")}
     ovf(x){return this.addStyle("overflow", x)}
