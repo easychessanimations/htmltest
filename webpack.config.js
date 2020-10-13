@@ -10,10 +10,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },    
   devServer: { 
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "dist"),    
     port: 8080,
     hot: true,
-    watchContentBase: true,    
+    watchContentBase: true,        
     watchOptions: {
         poll: true
     },
