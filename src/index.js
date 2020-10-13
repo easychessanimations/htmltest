@@ -1,14 +1,16 @@
 import _ from 'lodash'
 import './style.css'
 import './favicon.ico'
-import { div, table, tr, td } from './smartdom/smartdom.js'
+import { div, table, tr, td, button } from './smartdom/smartdom.js'
 
-let app = div()
-    .ae("click", _=>app.html("Click !"))
+let floatdiv
+
+let app = div()    
     .tac().por().pad(20).w(400).h(400).bc("#ffa").c("#007").html("Smartdom demo !")
     .fwb().fs(20).fsti().tdecu().bdr("solid").bdrw(10).bdrc("#070").bdrs("dashed").bdrr(20)
     .boxs("10px 10px 5px #007").mar(20).ovfys()
-    .a(div().op(0.5).w(180).h(100).bc("#afa").poa().t(100).l(20).pad(10).a(
+    .a((floatdiv = div()).op(0.5).w(180).h(100).bc("#afa").poa().t(100).l(20).pad(10).a(
+        button(_=>floatdiv.html("Click !")).mar(5).html("Click"),
         table().sa("cellpadding", 3).sa("cellspacing", 3).sa("border", 1).a(
             tr().a(
                 td().html("a"),

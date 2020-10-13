@@ -101,3 +101,12 @@ export class td_ extends SmartdomElement_{
 }
 
 export function td(){return new td_()}
+
+export class button_ extends SmartdomElement_{
+    constructor(callback){
+        super({tagName: "button"})
+        this.ae("click", callback)
+    }
+}
+
+export function button(callback){return new button_(callback)}
