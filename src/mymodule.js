@@ -1,4 +1,4 @@
-const { rep } = require('./moduledependency.js')
+const { dep } = require('./moduledependency.js')
 
 function intro(){
     return "intro" + " " + dep
