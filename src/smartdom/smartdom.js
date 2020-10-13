@@ -21,6 +21,12 @@ export class SmartdomElement_{
     t(x){return this.addStyle("top", x + "px")}
     l(x){return this.addStyle("left", x + "px")}
     c(x){return this.addStyle("color", x)}
+    ovf(x){return this.addStyle("overflow", x)}
+    ovfs(){return this.ovf("scroll")}
+    ovfx(x){return this.addStyle("overflowX", x)}
+    ovfxs(){return this.ovfx("scroll")}
+    ovfy(x){return this.addStyle("overflowY", x)}
+    ovfys(){return this.ovfy("scroll")}
     bdr(x){return this.addStyle("border", x)}
     bdrw(x){return this.addStyle("borderWidth", x + "px")}
     bdrc(x){return this.addStyle("borderColor", x)}
