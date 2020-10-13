@@ -18,6 +18,11 @@ export class SmartdomElement_{
         return this
     }
 
+    ae(kind, callback){
+        this.e.addEventListener(kind, callback)
+        return this
+    }
+
     sa(key, value){
         this.e.setAttribute(key, value)
         return this
