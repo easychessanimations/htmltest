@@ -3,6 +3,6 @@ import './style.css'
 import './favicon.ico'
 import { div } from './smartdom/smartdom.js'
 
-let app = div().addStyle("width", "200px").addStyle("height", "200px").addStyle("backgroundColor", "#0f0")
+let app = div().w(400).h(400).bc("#00f")
 
 document.body.appendChild(app.e)

@@ -10,6 +10,10 @@ export class SmartdomElement_{
 
         return this
     }
+
+    w(x){this.addStyle("width", x)}
+    h(x){this.addStyle("height", x)}
+    bc(x){this.addStyle("backgroundColor", x)}
 }
 
 export class div_ extends SmartdomElement_{
