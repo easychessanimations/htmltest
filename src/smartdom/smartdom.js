@@ -5,6 +5,11 @@ export class SmartdomElement_{
         this.e = document.createElement(this.props.tagName)
     }
 
+    a(child){
+        this.e.appendChild(child.e)
+        return this
+    }
+
     addStyle(name, value){
         this.e.style[name] = value
 
@@ -13,6 +18,8 @@ export class SmartdomElement_{
 
     w(x){return this.addStyle("width", x + "px")}
     h(x){return this.addStyle("height", x + "px")}
+    t(x){return this.addStyle("top", x + "px")}
+    l(x){return this.addStyle("left", x + "px")}
     c(x){return this.addStyle("color", x)}
     bdr(x){return this.addStyle("border", x)}
     bdrw(x){return this.addStyle("borderWidth", x + "px")}
@@ -29,6 +36,9 @@ export class SmartdomElement_{
     bc(x){return this.addStyle("backgroundColor", x)}
     pad(x){return this.addStyle("padding", x + "px")}
     mar(x){return this.addStyle("margin", x + "px")}
+    pos(x){return this.addStyle("position", x)}
+    por(){return this.pos("relative")}
+    poa(){return this.pos("absolute")}
     html(x){this.e.innerHTML = x;return this}
 }
 
