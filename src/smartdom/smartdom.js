@@ -17,6 +17,8 @@ export class SmartdomElement_{
     fw(x){return this.addStyle("fontWeight", x)}
     fwb(){return this.fw("bold")}
     fs(x){return this.addStyle("fontSize", x + "px")}
+    fst(x){return this.addStyle("fontStyle", x)}
+    fsti(){return this.fst("italic")}
     bc(x){return this.addStyle("backgroundColor", x)}
     pad(x){return this.addStyle("padding", x + "px")}
     html(x){this.e.innerHTML = x;return this}
