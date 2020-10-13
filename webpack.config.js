@@ -21,6 +21,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },    
   devServer: { 
+      // make HMR work - start
+      host: '0.0.0.0',
+      disableHostCheck: true,
+      public: require('child_process').execSync('gp url 8080').toString().trim(),
+      // make HMR work - end
     contentBase: path.join(__dirname, "dist"),    
     port: 8080,
     hot: true,
