@@ -1,7 +1,9 @@
 import _ from 'lodash'
 import './style.css'
 import './favicon.ico'
-import { div, table, tr, td, button } from './smartdom/smartdom.js'
+//import { div, table, tr, td, button } from './smartdom/smartdom.js'
+
+import { div, table, tr, td, button } from '@easychessanimations/foo'
 
 let floatdiv
 
