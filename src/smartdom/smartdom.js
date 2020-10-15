@@ -4,9 +4,43 @@ export class SmartdomElement_{
 
         this.e = document.createElement(this.props.tagName)
 
+        this.id = this.props.id || null
+
         this.parent = null
 
         this.childs = []
+    }
+
+    storePath(){
+        if(!this.id) return null
+
+        return this.id
+    }
+
+    store(blob){
+        let path = this.storePath()
+
+        if(!path) return
+
+        localStorage.setItem(path, JSON.stringify(blob))
+    }
+
+    state(){
+        let path = this.storePath()
+
+        let blob = {}
+
+        if(!path) return blob
+
+        let stored = localStorage.getItem(path)
+
+        if(!stored) return blob
+
+        try{
+            blob = JSON.parse(stored)
+        }catch(err){}
+
+        return blob
     }
 
     appendChild(child){
@@ -139,3 +173,22 @@ export class input_ extends SmartdomElement_{
 }
 
 export function input(kind){return new input_(kind)}
+
+export class TextInput_ extends SmartdomElement_{
+    constructor(props){
+        super({...{tagName: "div"}, ...props})
+        this.disp("inline-block").a(
+            this.text = input("text").ae("input", this.textChanged.bind(this))
+        )
+
+        this.text.e.value = this.state().value || ""
+    }
+
+    textChanged(){
+        this.store({
+            value: this.text.e.value
+        })
+    }
+}
+
+export function TextInput(props){return new TextInput_(props)}
