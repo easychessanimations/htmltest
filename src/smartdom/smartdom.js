@@ -3,15 +3,27 @@ export class SmartdomElement_{
         this.props = props
 
         this.e = document.createElement(this.props.tagName)
+
+        this.parent = null
+
+        this.childs = []
+    }
+
+    appendChild(child){
+        this.childs.push(child)
+
+        child.parent = this
+
+        this.e.appendChild(child.e)
     }
 
     a(...childs){
         for(let child of childs){
             if(child instanceof SmartdomElement_){
-                this.e.appendChild(child.e)
+                this.appendChild(child)
             }else{
                 for(let childe of child){
-                    this.e.appendChild(childe.e)
+                    this.appendChild(childe)
                 }                
             }            
         }
