@@ -45,7 +45,7 @@ module.exports = {
   module: {      
      rules: [
         {
-          test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+          test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$|\.html$/,
           use:{
             loader: 'file-loader?name=[name].[ext]'  // <-- retain original file name
           }          
