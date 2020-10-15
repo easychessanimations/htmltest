@@ -1,4 +1,4 @@
 node_modules
 
-dist/
-!dist/ReadMe.md
+/dist/*
+!/dist/ReadMe.md
