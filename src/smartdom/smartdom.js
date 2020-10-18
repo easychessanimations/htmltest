@@ -1,3 +1,5 @@
+const scrollSize = 17
+
 export class SmartdomElement_{
     constructor(props){
         this.props = props || {}
@@ -247,11 +249,17 @@ export class Tab_ extends SmartdomElement_{
     clicked(){
         this.parentTabpane.containerDiv.x().a(this.element)
 
+        try{
+            this.element.resize(this.parentTabpane.width - scrollSize, this.parentTabpane.containerSize - scrollSize)
+        }catch(err){}
+
         this.parentTabpane.tabs.forEach(tab => {
             if(tab == this){
                 tab.bc("#ffa")
+                tab.selected = true
             }else{
                 tab.bc("#ddd")
+                tab.selected = false
             }
         })
     }
@@ -261,13 +269,23 @@ export function Tab(caption, element){return new Tab_(caption, element)}
 
 export class Tabpane_ extends SmartdomElement_{
     constructor(props){
-        super({tagName: "div"})
+        super({...{tagName: "div"},...props})
         this.tabSize = this.props.tabSize || 40
         this.width = this.props.width || 600
         this.height = this.props.height || 400
 
+        this.fitWindow = this.props.fitWindow || false
+
+        if(this.fitWindow) window.addEventListener("resize", this.resize.bind(this))
+
         this.tabs = []
 
+        this.build()
+    }
+
+    resize(width, height){
+        this.width = width
+        this.height = height
         this.build()
     }
 
@@ -279,21 +297,36 @@ export class Tabpane_ extends SmartdomElement_{
         return this
     }
 
-    build(){
-        this.w(this.width).h(this.height).bc("#aff").por()        
+    selectedTab(){
+        return this.tabs.find(tab => tab.selected)
+    }
+
+    build(){        
+        if(this.fitWindow){
+            this.width = window.innerWidth - scrollSize
+            this.height = window.innerHeight - scrollSize
+        }
+        this.x().w(this.width).h(this.height).bc("#aff").por()        
         this.tabDiv = div().fl().aic().jc("space-around").poa().w(this.width).h(this.tabSize).bc("#eee").t(0).l(0)
         this.containerSize = this.height - this.tabSize
         this.containerDiv = div().ovfs().poa().w(this.width).h(this.containerSize).t(this.tabSize).l(0)
         this.a(this.tabDiv, this.containerDiv)
 
         this.tabDiv.a(this.tabs)
+
+        let selectedTab = this.selectedTab()
+
+        if(selectedTab) selectedTab.clicked()
     }
 }
 
 export function Tabpane(props){return new Tabpane_(props)}
 
 export const testApp =
-    Tabpane().setTabs([
-        Tab("xxx", div().html("xxx")),
+    Tabpane({fitWindow:true}).setTabs([
+        Tab("xxx", Tabpane().setTabs([
+            Tab("xxx", div().html("xxx")),
+            Tab("yyy", div().html("yyy"))
+        ])),
         Tab("yyy", div().html("yyy"))
     ])
