@@ -32,14 +32,22 @@ export class SmartdomElement_{
         localStorage.setItem(path, JSON.stringify(blob))
     }
 
-    state(){
+    storeItem(key, blob){
+        let path = this.storePath()
+
+        if(!path) return
+
+        localStorage.setItem(path + "/" + key, JSON.stringify(blob))
+    }
+
+    state(key){
         let path = this.storePath()
 
         let blob = {}
 
-        if(!path) return blob
+        if(!path) return key ? null : blob
 
-        let stored = localStorage.getItem(path)
+        let stored = localStorage.getItem(path + (key ? "/" + key : ""))
 
         if(!stored) return blob
 
@@ -243,6 +251,7 @@ export class Tab_ extends SmartdomElement_{
         this.curp().dib().fl().bc("#ddd").pad(1).aic().a(
             this.captionDiv = div().marl(3).marr(2).html(caption)
         ).ae("click", this.clicked.bind(this))
+        this.caption = caption
         this.element = element
     }
 
@@ -257,6 +266,8 @@ export class Tab_ extends SmartdomElement_{
             if(tab == this){
                 tab.bc("#ffa")
                 tab.selected = true
+                
+                this.parentTabpane.storeItem("selectedCaption", tab.caption)
             }else{
                 tab.bc("#ddd")
                 tab.selected = false
@@ -273,6 +284,7 @@ export class Tabpane_ extends SmartdomElement_{
         this.tabSize = this.props.tabSize || 40
         this.width = this.props.width || 600
         this.height = this.props.height || 400
+        this.barColor = this.props.barColor || "#eee"
 
         this.fitWindow = this.props.fitWindow || false
 
@@ -289,11 +301,16 @@ export class Tabpane_ extends SmartdomElement_{
         this.build()
     }
 
+    storedSelectedTab(){
+        let selectedTab = this.tabs.find(tab => tab.caption == this.state("selectedCaption"))
+        return selectedTab || this.tabs[0]
+    }
+
     setTabs(tabs){
         this.tabs = tabs
         tabs.forEach(tab => tab.parentTabpane = this)
         this.build()
-        this.tabs[0].clicked()
+        this.storedSelectedTab().clicked()
         return this
     }
 
@@ -307,7 +324,7 @@ export class Tabpane_ extends SmartdomElement_{
             this.height = window.innerHeight - scrollSize
         }
         this.x().w(this.width).h(this.height).bc("#aff").por()        
-        this.tabDiv = div().fl().aic().jc("space-around").poa().w(this.width).h(this.tabSize).bc("#eee").t(0).l(0)
+        this.tabDiv = div().fl().aic().jc("space-around").poa().w(this.width).h(this.tabSize).bc(this.barColor).t(0).l(0)
         this.containerSize = this.height - this.tabSize
         this.containerDiv = div().ovfs().poa().w(this.width).h(this.containerSize).t(this.tabSize).l(0)
         this.a(this.tabDiv, this.containerDiv)
@@ -323,8 +340,8 @@ export class Tabpane_ extends SmartdomElement_{
 export function Tabpane(props){return new Tabpane_(props)}
 
 export const testApp =
-    Tabpane({fitWindow:true}).setTabs([
-        Tab("xxx", Tabpane().setTabs([
+    Tabpane({id:"main",fitWindow:true}).setTabs([
+        Tab("xxx", Tabpane({id:"sub",barColor:"#eff"}).setTabs([
             Tab("xxx", div().html("xxx")),
             Tab("yyy", div().html("yyy"))
         ])),
